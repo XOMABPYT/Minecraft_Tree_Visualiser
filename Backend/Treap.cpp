@@ -1,6 +1,7 @@
 #include "Treap.h"
 #include <utility>
 #include <algorithm>
+#include <string>
 
 int Treap::get_size(Node* t) {
     if (!t) return 0;
@@ -88,4 +89,23 @@ void Treap::destroy(Node* t) {
     destroy(t->left);
     destroy(t->right);
     delete t;
+}
+
+int Treap::build(const Node* t, TreeSnapshot& s) {
+    if (!t) return -1;
+    int id = s.nodes.size();
+    s.nodes.push_back({});
+    s.nodes[id].keys = {t->x};
+    s.nodes[id].label = {std::to_string(t->x), "p = " + std::to_string(t->y % 1000)};
+    s.nodes[id].info = {{"height ", std::to_string(t->h)}, {"p ", std::to_string(t->y)}, {"size ", std::to_string(t->sz)}};
+
+    int l = build(t->left, s);
+    int r = build(t->right, s);
+    s.nodes[id].children = {l, r};
+    return id;
+}
+TreeSnapshot Treap::snapshot() const {
+    TreeSnapshot s;
+    s.root = build(root, s);
+    return s;
 }

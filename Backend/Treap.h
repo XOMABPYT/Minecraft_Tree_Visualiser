@@ -1,17 +1,21 @@
 #pragma once
 
+#include "src/core/ITree.h"
+#include "src/core/TreeSnapshot.h"
+
 #include <utility>
 #include <random>
 #include <cstdint>
 
-class Treap {
+class Treap : public ITree{
   public:
     explicit Treap (std::uint64_t seed = 1337) : rng(seed) {}
     ~Treap () { destroy(root); }
 
-    bool insert(std::int64_t x);
-    bool erase(std::int64_t x);
+    bool insert(std::int64_t x) override;
+    bool erase(std::int64_t x) override;
 
+    TreeSnapshot snapshot() const override;
     Treap(const Treap&) = delete;
     Treap& operator=(const Treap&) = delete;
 
@@ -40,4 +44,5 @@ class Treap {
     static Node* merge(Node* t1, Node* t2);
     static std::pair<Node*, Node*> split(Node* t, std::int64_t k);
     static void destroy(Node* t);
+    static int build (const Node* t, TreeSnapshot& s);
 };
