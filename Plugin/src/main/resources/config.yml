@@ -1,0 +1,32 @@
+backend:
+  # Путь к бинарнику Backend. Относительный путь считается от папки сервера
+  # (при ./gradlew runServer это Plugin/run).
+  path: ../../Backend/build/tree_backend
+  # Seed ГСЧ случайных ключей и приоритетов treap; -1 — новый при каждом запуске.
+  seed: -1
+  # Сколько ждать ответа Backend, мс. Не дождались — процесс перезапускается.
+  timeout-ms: 5000
+
+render:
+  world: world
+  # Клетка сетки (0, 0) — корень дерева; глубина растёт вниз.
+  origin:
+    x: 0
+    y: 30
+    z: 20
+  spacing-x: 2
+  spacing-y: 4
+  edge-material: GRAY_CONCRETE
+  edge-thickness: 0.08
+  label-scale: 1.0
+  # Дальность видимости подписей и рёбер (1.0 ≈ 64 блока).
+  view-range: 2.0
+
+random:
+  min: 0
+  max: 999
+  max-count: 100
+
+hover:
+  period-ticks: 4
+  max-distance: 96

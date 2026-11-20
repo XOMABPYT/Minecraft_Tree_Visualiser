@@ -1,0 +1,17 @@
+name: TreeVisualiser
+version: '${version}'
+main: me.andrey.treevisualiser.TreeVisualiserPlugin
+api-version: '1.21'
+description: Визуализатор деревьев поиска (AVL, КЧД, treap, splay, B-дерево)
+authors: [andrey]
+
+commands:
+  tree:
+    description: Управление визуализатором деревьев поиска
+    usage: /tree <insert|random|view|clear> ...
+    permission: treevisualiser.use
+
+permissions:
+  treevisualiser.use:
+    description: Доступ к команде /tree и удалению ключей стрелами
+    default: op

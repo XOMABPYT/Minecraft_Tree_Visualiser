@@ -97,7 +97,7 @@ int Treap::build(const Node* t, TreeSnapshot& s) {
     s.nodes.push_back({});
     s.nodes[id].keys = {t->x};
     s.nodes[id].label = {std::to_string(t->x), "p = " + std::to_string(t->y % 1000)};
-    s.nodes[id].info = {{"height ", std::to_string(t->h)}, {"p ", std::to_string(t->y)}, {"size ", std::to_string(t->sz)}};
+    s.nodes[id].info = {{"height", std::to_string(t->h)}, {"p", std::to_string(t->y)}, {"size", std::to_string(t->sz)}};
 
     int l = build(t->left, s);
     int r = build(t->right, s);
