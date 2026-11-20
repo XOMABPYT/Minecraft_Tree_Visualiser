@@ -1,0 +1,36 @@
+# Сборка Backend
+Backend/build/
+Backend/cmake-build-*/
+
+# Gradle / плагин
+Plugin/build/
+Plugin/.gradle/
+.gradle/
+
+# Локальный сервер Paper (мир, логи, eula.txt, jar сервера)
+Plugin/run/
+
+# Jar-файлы (Minecraft/Paper нельзя коммитить по EULA)
+*.jar
+!Plugin/gradle/wrapper/gradle-wrapper.jar
+
+# Скомпилированные файлы
+*.o
+*.obj
+*.a
+*.so
+*.dylib
+*.dll
+*.exe
+*.out
+*.class
+
+# IDE
+.idea/
+*.iml
+.vscode/
+.cache/
+compile_commands.json
+
+# macOS
+.DS_Store
